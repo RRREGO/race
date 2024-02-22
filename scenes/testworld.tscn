@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/car.tscn" type="PackedScene" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.384314, 0.568627, 0.380392, 1 )
+
+[sub_resource type="PlaneMesh" id=1]
+material = SubResource( 2 )
+size = Vector2( 50, 50 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( -25, 0, -25, -25, 0, 25, 25, 0, -25, 25, 0, 25 )
+
+[node name="testworld" type="Spatial"]
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 3 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 25, 25, 25 )
+projection = 1
+size = 10.0
+near = 0.01
+far = 59.0
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.250414, 0.64324, -0.723557, 0, 0.747369, 0.664409, 0.968139, -0.166377, 0.187152, 0, 4.90237, 2.97851 )
+light_size = 1.0
+light_bake_mode = 2
+shadow_enabled = true
+
+[node name="sedanSports" parent="." instance=ExtResource( 1 )]
